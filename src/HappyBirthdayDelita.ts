@@ -1,7 +1,7 @@
 import { tsParticles } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
-const birthday = new Date("05.05.2017");
+const BIRTHDAY_DATE = new Date("05.05.2017");
 const DELITA = "Delita.jpg"
 
 function changeBackground(path: string){
@@ -20,18 +20,4 @@ function countdown(){
     const today = new Date();
     const timeLeft = birthday.getTime() - today.getTime();
     console.log(timeLeft);
-}
-
-class Timer {
-    constructor(countdown : Countdown){
-        let intervalId = setInterval(() => {
-            this.counter = this.counter - 1;
-            console.log(this.counter)
-            if(this.counter === 0){
-                //TODO: fix confetti and birthday cake
-                clearInterval(intervalId);
-                //TODO: changeBackground(path TIL Andre bilde);
-            }
-        })
-    }
 }
