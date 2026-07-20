@@ -1,5 +1,8 @@
-import { tsParticles } from "@tsparticles/engine";
+function changeBackground(path: string){
+    const element = document.getElementById("element");
+    element.style.backgroundImage = `url('${Delita.jpg}')`;
 
+}
 export interface Countdown{
     days: number;
     hours: number;
@@ -15,6 +18,7 @@ class Timer {
             if(this.counter === 0){
                 //TODO: fix confetti and birthday cake
                 clearInterval(intervalId);
+                //TODO: changeBackground(path TIL Andre bilde);
             }
         })
     }
