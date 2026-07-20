@@ -3,6 +3,7 @@ import { loadSlim } from "@tsparticles/slim";
 
 const BIRTHDAY_DATE = new Date("05.05.2017");
 const DELITA = "Delita.jpg"
+const BRITHDAY_DELITA = "SET PHOTO" //FIXME
 
 function changeBackground(path: string){
     const element = document.getElementById("element");
@@ -32,4 +33,14 @@ function calculate(): Countdown{
     //else here
     //TODO: calculate time for each hour, min ETC
     return {days, hours, minutes, seconds};
+}
+
+//once the birthday has arrived, cosmetic effects will be initialized
+function birthday(){
+    changeBackground(DELITA);
+    //TODO: show confetti,
+    const message = document.getElementById("birthday-message");
+    if(message){
+        message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
+    }
 }
