@@ -1,10 +1,12 @@
 import { tsParticles } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
 
 const birthday = new Date("05.05.2017");
+const DELITA = "Delita.jpg"
 
 function changeBackground(path: string){
     const element = document.getElementById("element");
-    element.style.backgroundImage = `url('${Delita.jpg}')`;
+    element.style.backgroundImage = DELITA;
 
 }
 export interface Countdown{
@@ -12,6 +14,12 @@ export interface Countdown{
     hours: number;
     minutes: number;
     seconds: number;
+}
+
+function countdown(){
+    const today = new Date();
+    const timeLeft = birthday.getTime() - today.getTime();
+    console.log(timeLeft);
 }
 
 class Timer {
