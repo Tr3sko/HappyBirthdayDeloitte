@@ -1,3 +1,7 @@
+import { tsParticles } from "@tsparticles/engine";
+
+const birthday = new Date("05.05.2017");
+
 function changeBackground(path: string){
     const element = document.getElementById("element");
     element.style.backgroundImage = `url('${Delita.jpg}')`;
