@@ -21,3 +21,15 @@ function countdown(){
     const timeLeft = birthday.getTime() - today.getTime();
     console.log(timeLeft);
 }
+
+function calculate(): Countdown{
+    const currTime = new Date();
+    const diff = BIRTHDAY_DATE.getTime() - currTime.getTime();
+
+    if(diff <= 0){
+        return {days: 0, hours: 0, minutes: 0, seconds: 0};
+    }
+    //else here
+    //TODO: calculate time for each hour, min ETC
+    return {days, hours, minutes, seconds};
+}
