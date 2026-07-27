@@ -11,7 +11,7 @@ const HOUR = DAY / 24;
 const MINUTE = HOUR / 60;
 const SECOND = 1000;
 
-function changeBackground(path: string){
+function setBackground(path: string){
     const element = document.getElementById("element");
     if(element){
         element.style.backgroundImage = `url('${path}')`;
@@ -22,9 +22,10 @@ function changeBackground(path: string){
 }
 
 //once the birthday has arrived, cosmetic effects will be initialized
-function birthday(){
-    changeBackground(BIRTHDAY_DELITA);
-    showConfetti();
+async function birthday(){
+    setBackground(BIRTHDAY_DELITA);
+
+    await showConfetti();
 
     const message = document.getElementById("birthday-message");
     if(message){
@@ -61,7 +62,7 @@ function calculate(): Countdown{
 
 //from tsparticles presets on github
 async function showConfetti() {
-    await loadConfettiExplosionsPreset(engine);
+    await loadConfettiExplosionsPreset(tsParticles);
     await tsParticles.load({
         id: "tsparticles",
         options: {
@@ -71,12 +72,15 @@ async function showConfetti() {
                 },
             },
             preset: "confettiExplosions", // or "confetti-explosions"
+            background: {
+                color:"transparent"
+            },
         },
     });
 }
 
 async function init() {
-    changeBackground(DELITA);
+    setBackground(DELITA);
 }
 
 //when page loads
