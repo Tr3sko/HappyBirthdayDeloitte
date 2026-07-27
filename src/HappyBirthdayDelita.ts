@@ -62,3 +62,38 @@ function birthday(){
         message.style.display = "block"; //temporary display for testing - TODO: change this later
     }
 }
+//from tsParticles repo on github
+async function showConfetti() {
+    await loadSlim(tsParticles);
+    await tsParticles.load({
+        id: "tsparticles",
+        options: {
+            background: {
+                color: "transparent"
+            },
+            particles: {
+                color: {
+                    value: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"]
+                },
+                move: {
+                    enable: true,
+                    speed: 10,
+                    direction: "bottom",
+                    gravity: {
+                        enable: true,
+                        acceleration: 10
+                    }
+                },
+                number: {
+                    value: 300
+                },
+                size: {
+                    value: { min: 5, max: 20 }
+                },
+                shape: {
+                    type: ["circle", "square", "triangle"]
+                }
+            }
+        }
+    });
+}
