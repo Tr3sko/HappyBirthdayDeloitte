@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vite": "^8.1.5"
+  },
   "devDependencies": {
     "typescript": "^5.5.3"
   },

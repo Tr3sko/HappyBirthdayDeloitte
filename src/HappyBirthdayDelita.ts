@@ -2,8 +2,8 @@ import { tsParticles } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 const BIRTHDAY_DATE = new Date("2026-05-05");
-const DELITA = "Delita.jpg"
-const BRITHDAY_DELITA = "BirthdayDelita.jpg"
+const DELITA = "public/Delita.jpg"
+const BRITHDAY_DELITA = "public/BirthdayDelita.jpg"
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
