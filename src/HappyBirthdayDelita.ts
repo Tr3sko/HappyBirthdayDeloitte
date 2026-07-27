@@ -92,7 +92,7 @@ async function showConfetti() {
         }
     });
 }
-
+//before birthday
 async function initParticles() {
     await loadSlim(tsParticles);
     await tsParticles.load({
