@@ -38,6 +38,10 @@ function calculate(): Countdown{
     }
     //else here
     //TODO: calculate time for each hour, min ETC
+    const days = Math.floor(diff / day);
+    const hours = Math.floor((diff % day) / hour);
+    const minutes = Math.floor((diff % hour) / minute);
+    const seconds = Math.floor((diff % minute) / second);
     return {days, hours, minutes, seconds};
 }
 
