@@ -8,7 +8,7 @@ const BRITHDAY_DELITA = "SET PHOTO" //FIXME
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
 const MINUTE = HOUR / 60;
-const SECOND = 1000;
+const SECOND = 1000; //FIXME may not be needed
 
 function changeBackground(path: string){
     const element = document.getElementById("element");
@@ -30,7 +30,7 @@ function countdown(){
 
 function calculate(): Countdown{
     const currTime = new Date();
-    let secondsLeft = Math.floor(BIRTHDAY_DATE.getTime() - currTime.getTime() /1000);
+    let secondsLeft = Math.floor(BIRTHDAY_DATE.getTime() - currTime.getTime());
 
     if(secondsLeft <= 0){
         birthday(); // should change the visuals
