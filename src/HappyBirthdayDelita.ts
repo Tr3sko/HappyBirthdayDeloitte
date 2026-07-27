@@ -97,3 +97,34 @@ async function showConfetti() {
         }
     });
 }
+
+async function initParticles() {
+    await loadSlim(tsParticles);
+    await tsParticles.load({
+        id: "tsparticles",
+        options: {
+            background: {
+                color: "transparent"
+            },
+            particles: {
+                color: {
+                    value: ["#ff6b6b", "#4ecdc4", "#45b7d1", "#96ceb4", "#ffeaa7"]
+                },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: "top"
+                },
+                number: {
+                    value: 80
+                },
+                size: {
+                    value: { min: 3, max: 8 }
+                },
+                shape: {
+                    type: ["circle", "square", "triangle"]
+                }
+            }
+        }
+    });
+}
