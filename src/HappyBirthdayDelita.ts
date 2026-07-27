@@ -128,3 +128,29 @@ async function init() {
     await initParticles();
     changeBackground(DELITA);
 }
+
+//when page loads
+document.addEventListener("DOMContentLoaded", init);
+
+let birthdayTriggered = false;
+
+//from github
+function pad(num: number): string {
+    return num.toString().padStart(2, '0');
+}
+
+setInterval(() => {
+    const { days, hours, minutes, seconds } = calculate();
+
+    // Update display
+    document.getElementById("days")!.textContent = pad(days);
+    document.getElementById("hours")!.textContent = pad(hours);
+    document.getElementById("minutes")!.textContent = pad(minutes);
+    document.getElementById("seconds")!.textContent = pad(seconds);
+
+    // Check if birthday arrived (only trigger once)
+    if (days === 0 && hours === 0 && minutes === 0 && seconds === 0 && !birthdayTriggered) {
+        birthdayTriggered = true;
+        birthday();
+    }
+}, 1000);
