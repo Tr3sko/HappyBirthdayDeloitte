@@ -3,7 +3,7 @@ import { loadSlim } from "@tsparticles/slim";
 
 const BIRTHDAY_DATE = new Date("2026-05-05");
 const DELITA = "Delita.jpg"
-const BRITHDAY_DELITA = "SET PHOTO" //FIXME
+const BRITHDAY_DELITA = "BirthdayDelita.jpg"
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
@@ -13,12 +13,25 @@ const MINUTE = HOUR / 60;
 function changeBackground(path: string){
     const element = document.getElementById("element");
     if(element){
-        element.style.backgroundImage = DELITA; //TODO: change path
+        element.style.backgroundImage = `url('${path}')`;
         element.style.backgroundSize = "cover";
         element.style.backgroundPosition = "center";
     }
 
 }
+
+//once the birthday has arrived, cosmetic effects will be initialized
+function birthday(){
+    changeBackground("BIRTHDAY_IMAGE"); //fixme: once picture is found
+    showConfetti();
+
+    const message = document.getElementById("birthday-message");
+    if(message){
+        message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
+        message.style.display = "block"; //temporary display for testing - TODO: change this later
+    }
+}
+
 export interface Countdown{
     days: number;
     hours: number;
@@ -46,17 +59,6 @@ function calculate(): Countdown{
     return {days, hours, minutes, seconds};
 }
 
-//once the birthday has arrived, cosmetic effects will be initialized
-function birthday(){
-    changeBackground("BIRTHDAY-PHOTO"); //fixme: once picture is found
-    //TODO: show confetti,
-    showConfetti();
-    const message = document.getElementById("birthday-message");
-    if(message){
-        message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
-        message.style.display = "block"; //temporary display for testing - TODO: change this later
-    }
-}
 async function showConfetti() {
     await loadSlim(tsParticles);
     await tsParticles.load({
