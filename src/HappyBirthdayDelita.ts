@@ -1,7 +1,7 @@
 import { tsParticles } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
-const BIRTHDAY_DATE = new Date("05.05.2017");
+const BIRTHDAY_DATE = new Date("2026-05-05");
 const DELITA = "Delita.jpg"
 const BRITHDAY_DELITA = "SET PHOTO" //FIXME
 
@@ -48,7 +48,7 @@ function calculate(): Countdown{
 
 //once the birthday has arrived, cosmetic effects will be initialized
 function birthday(){
-    changeBackground("BIRTHDAY PHOTO"); //fixme: once picture is found
+    changeBackground("BIRTHDAY-PHOTO"); //fixme: once picture is found
     //TODO: show confetti,
     showConfetti();
     const message = document.getElementById("birthday-message");
@@ -57,7 +57,6 @@ function birthday(){
         message.style.display = "block"; //temporary display for testing - TODO: change this later
     }
 }
-//from tsParticles repo on github
 async function showConfetti() {
     await loadSlim(tsParticles);
     await tsParticles.load({
@@ -92,7 +91,6 @@ async function showConfetti() {
         }
     });
 }
-//before birthday
 async function initParticles() {
     await loadSlim(tsParticles);
     await tsParticles.load({
