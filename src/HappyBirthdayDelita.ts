@@ -5,6 +5,11 @@ const BIRTHDAY_DATE = new Date("05.05.2017");
 const DELITA = "Delita.jpg"
 const BRITHDAY_DELITA = "SET PHOTO" //FIXME
 
+const day = 1000 * 60 * 60 * 24;
+const hour = day / 24;
+const minute = hour / 60;
+const second = 1000;
+
 function changeBackground(path: string){
     const element = document.getElementById("element");
     element.style.backgroundImage = DELITA;
@@ -28,6 +33,7 @@ function calculate(): Countdown{
     const diff = BIRTHDAY_DATE.getTime() - currTime.getTime();
 
     if(diff <= 0){
+        birthday(); // should change the visuals
         return {days: 0, hours: 0, minutes: 0, seconds: 0};
     }
     //else here
