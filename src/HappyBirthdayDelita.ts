@@ -30,7 +30,7 @@ function countdown(){
 
 function calculate(): Countdown{
     const currTime = new Date();
-    const diff = BIRTHDAY_DATE.getTime() - currTime.getTime();
+    const totalSeconds = Math.floor(BIRTHDAY_DATE.getTime() - currTime.getTime() /1000);
 
     if(diff <= 0){
         birthday(); // should change the visuals
