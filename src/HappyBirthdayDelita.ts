@@ -1,8 +1,7 @@
 import { tsParticles } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim";
-import {confetti} from "@tsparticles/confetti";
+import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
 
-const BIRTHDAY_DATE = new Date(2026,7,27);
+const BIRTHDAY_DATE = new Date(2026,6,27);
 const birthdayTime = BIRTHDAY_DATE.getTime();
 const DELITA = "/Delita.jpg"
 const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
@@ -43,30 +42,16 @@ export interface Countdown{
 
 function calculate(): Countdown{
     const currTime = Date.now();
-    //testing
-    console.log("Current Time: ", currTime);
-
     let msLeft = birthdayTime - currTime;
-
-    //FOR TESTING:
-    console.log("Birthday: ", BIRTHDAY_DATE);
-    console.log("Current Time: ", new Date(currTime));
-    console.log("Milliseconds Left: ", msLeft);
 
     //FIXME: no need for this if we check it in updateCountdown
     if(msLeft <= 0){
-        //testing
-        console.log("its her birthday!!");
         return {days: 0, hours: 0, minutes: 0, seconds: 0};
     }
-
     const days = Math.floor(msLeft / DAY);
     msLeft %= DAY;
-    //testing
-    console.log("ms left", msLeft);
     const hours = Math.floor(msLeft / HOUR);
     msLeft %= HOUR;
-    console.log("ms left", msLeft);
     const minutes = Math.floor(msLeft / MINUTE);
     msLeft %= MINUTE;
     const seconds = Math.floor(msLeft / SECOND);
@@ -76,36 +61,17 @@ function calculate(): Countdown{
 
 //from tsparticles presets on github
 async function showConfetti() {
-    await loadSlim(tsParticles);
+    await loadConfettiExplosionsPreset(engine);
     await tsParticles.load({
         id: "tsparticles",
         options: {
-            background: {
-                color: "transparent"
-            },
             particles: {
                 color: {
-                    value: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"]
+                    value: ["#0000ff", "#00ff00"],
                 },
-                move: {
-                    enable: true,
-                    speed: 5,
-                    direction: "bottom",
-                    gravity: {
-                        enable: true,
-                    }
-                },
-                number: {
-                    value: 50
-                },
-                size: {
-                    value: 8
-                },
-                shape: {
-                    type: ["circle"]
-                }
-            }
-        }
+            },
+            preset: "confettiExplosions", // or "confetti-explosions"
+        },
     });
 }
 
