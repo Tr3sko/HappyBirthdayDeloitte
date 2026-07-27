@@ -129,11 +129,19 @@ async function initParticles() {
     });
 }
 
-async function init(){
-    await initParticles();
-    changeBackground(DELITA);
-    setInterval(() =>{
-        const result = calculate();
-        updateDisplay(result);
-    }, 1000);
-}
+setInterval(() => {
+    const { days, hours, minutes, seconds } = getCountdown();
+
+    // Simple update - assumes you have elements with these IDs
+    document.getElementById("days")!.textContent = String(days).padStart(2, '0');
+    document.getElementById("hours")!.textContent = String(hours).padStart(2, '0');
+    document.getElementById("minutes")!.textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds")!.textContent = String(seconds).padStart(2, '0');
+
+    // Check if birthday arrived
+    if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+        // Trigger birthday effects
+        document.getElementById("birthday-message")!.style.display = "block";
+        // Change background, show confetti, etc.
+    }
+}, 1000);
