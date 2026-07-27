@@ -134,19 +134,19 @@ document.addEventListener("DOMContentLoaded", init);
 
 let birthdayTriggered = false;
 
-//from github
-function pad(num: number): string {
-    return num.toString().padStart(2, '0');
+//local pad helper bc im encountering errors with packages atm - TEMPORARY FIX
+function pad2(value: number): string {
+    return value < 10 ? `0${value}` : String(value);
 }
 
 setInterval(() => {
     const { days, hours, minutes, seconds } = calculate();
 
     // Update display
-    document.getElementById("days")!.textContent = pad(days);
-    document.getElementById("hours")!.textContent = pad(hours);
-    document.getElementById("minutes")!.textContent = pad(minutes);
-    document.getElementById("seconds")!.textContent = pad(seconds);
+    document.getElementById("days")!.textContent = pad2(days);
+    document.getElementById("hours")!.textContent = pad2(hours);
+    document.getElementById("minutes")!.textContent = pad2(minutes);
+    document.getElementById("seconds")!.textContent = pad2(seconds);
 
     // Check if birthday arrived (only trigger once)
     if (days === 0 && hours === 0 && minutes === 0 && seconds === 0 && !birthdayTriggered) {
