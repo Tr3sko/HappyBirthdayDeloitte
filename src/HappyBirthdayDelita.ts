@@ -54,10 +54,11 @@ function calculate(): Countdown{
 
 //once the birthday has arrived, cosmetic effects will be initialized
 function birthday(){
-    changeBackground(DELITA);
+    changeBackground("BIRTHDAY PHOTO"); //fixme: once picture is found
     //TODO: show confetti,
     const message = document.getElementById("birthday-message");
     if(message){
         message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
+        message.style.display = "block"; //temporary display for testing - TODO: change this later
     }
 }
