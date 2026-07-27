@@ -2,8 +2,9 @@ import { tsParticles } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 const BIRTHDAY_DATE = new Date("2026-05-05");
-const DELITA = "public/Delita.jpg"
-const BRITHDAY_DELITA = "public/BirthdayDelita.jpg"
+const birthdayTime = BIRTHDAY_DATE.getTime();
+const DELITA = "/Delita.jpg"
+const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
@@ -22,7 +23,7 @@ function changeBackground(path: string){
 
 //once the birthday has arrived, cosmetic effects will be initialized
 function birthday(){
-    changeBackground("BIRTHDAY_IMAGE"); //fixme: once picture is found
+    changeBackground(BIRTHDAY_DELITA);
     showConfetti();
 
     const message = document.getElementById("birthday-message");
