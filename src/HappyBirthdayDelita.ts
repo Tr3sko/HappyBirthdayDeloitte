@@ -5,10 +5,10 @@ const BIRTHDAY_DATE = new Date("05.05.2017");
 const DELITA = "Delita.jpg"
 const BRITHDAY_DELITA = "SET PHOTO" //FIXME
 
-const day = 1000 * 60 * 60 * 24;
-const hour = day / 24;
-const minute = hour / 60;
-const second = 1000;
+const DAY = 1000 * 60 * 60 * 24;
+const HOUR = DAY / 24;
+const MINUTE = HOUR / 60;
+const SECOND = 1000;
 
 function changeBackground(path: string){
     const element = document.getElementById("element");
@@ -36,15 +36,15 @@ function calculate(): Countdown{
         birthday(); // should change the visuals
         return {days: 0, hours: 0, minutes: 0, seconds: 0};
     }
-    //else here
-    //TODO: calculate time for each hour, min ETC
-    const days = Math.floor(secondsLeft / day);
-    secondsLeft %= day;
-    const hours = Math.floor((secondsLeft % day) / hour);
-    secondsLeft %= hour;
-    const minutes = Math.floor((secondsLeft % hour) / minute);
-    secondsLeft %= minute;
-    const seconds = Math.floor((secondsLeft % minute) / second);
+
+    const days = Math.floor(secondsLeft / DAY);
+    secondsLeft %= DAY;
+    const hours = Math.floor(secondsLeft / HOUR);
+    secondsLeft %= HOUR;
+    const minutes = Math.floor(secondsLeft / MINUTE);
+    secondsLeft %= MINUTE;
+    const seconds = secondsLeft;
+
     return {days, hours, minutes, seconds};
 }
 
