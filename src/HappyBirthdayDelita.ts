@@ -13,7 +13,7 @@ const MINUTE = HOUR / 60;
 function changeBackground(path: string){
     const element = document.getElementById("element");
     if(element){
-        element.style.backgroundImage = DELITA;
+        element.style.backgroundImage = DELITA; //TODO: change path
         element.style.backgroundSize = "cover";
         element.style.backgroundPosition = "center";
     }
@@ -24,12 +24,6 @@ export interface Countdown{
     hours: number;
     minutes: number;
     seconds: number;
-}
-
-function countdown(){
-    const today = new Date();
-    const timeLeft = birthday.getTime() - today.getTime();
-    console.log(timeLeft);
 }
 
 function calculate(): Countdown{
