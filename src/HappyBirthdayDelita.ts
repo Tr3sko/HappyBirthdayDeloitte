@@ -50,6 +50,7 @@ function calculate(): Countdown{
 function birthday(){
     changeBackground("BIRTHDAY PHOTO"); //fixme: once picture is found
     //TODO: show confetti,
+    showConfetti();
     const message = document.getElementById("birthday-message");
     if(message){
         message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
