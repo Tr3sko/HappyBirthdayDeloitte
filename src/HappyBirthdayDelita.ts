@@ -30,9 +30,9 @@ function countdown(){
 
 function calculate(): Countdown{
     const currTime = new Date();
-    const totalSeconds = Math.floor(BIRTHDAY_DATE.getTime() - currTime.getTime() /1000);
+    let secondsLeft = Math.floor(BIRTHDAY_DATE.getTime() - currTime.getTime() /1000);
 
-    if(diff <= 0){
+    if(secondsLeft <= 0){
         birthday(); // should change the visuals
         return {days: 0, hours: 0, minutes: 0, seconds: 0};
     }
