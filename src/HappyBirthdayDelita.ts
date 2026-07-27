@@ -8,11 +8,13 @@ const BRITHDAY_DELITA = "SET PHOTO" //FIXME
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
 const MINUTE = HOUR / 60;
-const SECOND = 1000; //FIXME may not be needed
+//const SECOND = 1000; //FIXME may not be needed
 
 function changeBackground(path: string){
     const element = document.getElementById("element");
-    element.style.backgroundImage = DELITA;
+    if(element){
+        element.style.backgroundImage = DELITA;
+    }
 
 }
 export interface Countdown{
