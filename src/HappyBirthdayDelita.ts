@@ -128,3 +128,12 @@ async function initParticles() {
         }
     });
 }
+
+async function init(){
+    await initParticles();
+    changeBackground(DELITA);
+    setInterval(() =>{
+        const result = calculate();
+        updateDisplay(result);
+    }, 1000);
+}
