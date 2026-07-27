@@ -14,6 +14,8 @@ function changeBackground(path: string){
     const element = document.getElementById("element");
     if(element){
         element.style.backgroundImage = DELITA;
+        element.style.backgroundSize = "cover";
+        element.style.backgroundPosition = "center";
     }
 
 }
