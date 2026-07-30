@@ -1,7 +1,7 @@
 import { tsParticles } from "@tsparticles/engine";
 import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
 
-const BIRTHDAY_DATE = new Date(2026,6,27);
+const BIRTHDAY_DATE = new Date(2026,7,27);
 const birthdayTime = BIRTHDAY_DATE.getTime();
 const DELITA = "/Delita.jpg"
 const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
@@ -25,6 +25,11 @@ function setBackground(path: string){
 async function birthday(){
     setBackground(BIRTHDAY_DELITA);
 
+    const container = document.getElementById("tsparticles");
+    if (container) {
+        container.style.display = "block";
+        container.classList.add("show");
+    }
     await showConfetti();
 
     const message = document.getElementById("birthday-message");
@@ -63,24 +68,34 @@ function calculate(): Countdown{
 //from tsparticles presets on github
 async function showConfetti() {
     await loadConfettiExplosionsPreset(tsParticles);
-    await tsParticles.load({
-        id: "tsparticles",
-        options: {
-            particles: {
-                color: {
-                    value: ["#0000ff", "#00ff00"],
+    try{
+        await tsParticles.load({
+            id: "tsparticles",
+            options: {
+                particles: {
+                    color: {
+                        value: ["#0000ff", "#00ff00"],
+                    },
+                },
+                preset: "confettiExplosions", // or "confetti-explosions"
+                background: {
+                    color:"transparent"
                 },
             },
-            preset: "confettiExplosions", // or "confetti-explosions"
-            background: {
-                color:"transparent"
-            },
-        },
-    });
+        });
+        console.log("confetti loaded");
+    } catch(error){
+        console.error("confetti error");
+    }
 }
 
 async function init() {
     setBackground(DELITA);
+    const container = document.getElementById("tsparticles");
+    if (container) {
+        container.style.display = "none";
+        container.classList.remove("show");
+    }
 }
 
 //when page loads
