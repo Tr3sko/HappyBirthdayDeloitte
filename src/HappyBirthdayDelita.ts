@@ -1,8 +1,8 @@
 import { tsParticles } from "@tsparticles/engine";
 import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
 
-const BIRTHDAY_DATE = new Date(2026,7,27);
-const birthdayTime = BIRTHDAY_DATE.getTime();
+const BIRTHDAY_DATE = new Date(); //new Date(2026,6,27); //FIXME: change to real date
+const birthdayTime = (BIRTHDAY_DATE.getTime()) + 5000; //FIXME: remove 5 seconds only for testing
 const DELITA = "/Delita.jpg"
 const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
 
@@ -15,7 +15,7 @@ function setBackground(path: string){
     const element = document.getElementById("element");
     if(element){
         element.style.backgroundImage = `url('${path}')`;
-        element.style.backgroundSize = "cover";
+        element.style.backgroundSize = "contain";
         element.style.backgroundPosition = "center";
     }
 
@@ -81,6 +81,15 @@ async function showConfetti() {
                 background: {
                     color:"transparent"
                 },
+                emitters: {
+                    rate: {
+                        quantity: 50,
+                        delay: 0.5
+                    },
+                    life: {
+                        duration: 0.1
+                    }
+                }
             },
         });
         console.log("confetti loaded");
