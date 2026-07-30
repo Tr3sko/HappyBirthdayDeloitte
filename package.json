@@ -1,16 +1,24 @@
 {
   "name": "HappyBirthdayDeloitte",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "description": "Countdown until Delita#s birthday!",
   "scripts": {
-    "build": "tsc"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@tsparticles/confetti": "^4.3.2",
+    "@tsparticles/engine": "^4.1.1",
+    "@tsparticles/preset-confetti-explosions": "^4.3.2",
+    "@tsparticles/slim": "^4.1.1",
     "vite": "^8.1.5"
   },
   "devDependencies": {
     "typescript": "^5.5.3"
   },
-  "private": true
+  "private": true,
+  "allowScripts": {
+    "@tsparticles/preset-confetti-explosions@4.3.2": true
+  }
 }
