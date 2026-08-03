@@ -11,6 +11,14 @@ const HOUR = DAY / 24;
 const MINUTE = HOUR / 60;
 const SECOND = 1000;
 
+//I keep this inline as its a small project
+export interface Countdown{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+}
+
 function setBackground(path: string){
     const element = document.getElementById("element");
     if(!element){
@@ -30,13 +38,6 @@ async function birthday(){
         message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
         message.style.display = "block"; //temporary display for testing - TODO: change this later
     }
-}
-
-export interface Countdown{
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
 }
 
 function calculateCountdown(): Countdown{
