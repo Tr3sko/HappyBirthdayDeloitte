@@ -1,7 +1,4 @@
-//import { tsParticles } from "@tsparticles/engine";
-//import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
-import { start as startParticles } from "./particles";
-
+import { start as showConfetti } from "./particles";
 
 const BIRTHDAY_DATE = new Date(Date.now())//new Date(2027,4,15); //NOTE: remember to use index of month
 const birthdayTime = (BIRTHDAY_DATE.getTime() + 5000);
@@ -35,7 +32,7 @@ function setBackground(path: string){
 async function birthday(){
     setBackground(BIRTHDAY_DELITA);
 
-    await startParticles();
+    await showConfetti();
 
     const message = document.getElementById("birthday-message");
     if(message){
