@@ -1,8 +1,8 @@
 //import { tsParticles } from "@tsparticles/engine";
 //import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
 
-const BIRTHDAY_DATE = new Date(); //new Date(2026,6,27); //FIXME: change to real date
-const birthdayTime = (BIRTHDAY_DATE.getTime()) + 5000; //FIXME: remove 5 seconds only for testing
+const BIRTHDAY_DATE = new Date(2027,4,15); //NOTE: remember to use index of month
+const birthdayTime = (BIRTHDAY_DATE.getTime());
 const DELITA = "/Delita.jpg"
 const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
 
