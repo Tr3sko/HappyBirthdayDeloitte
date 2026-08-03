@@ -1,9 +1,6 @@
 //from canvas-confetti on github
 import confetti from 'canvas-confetti';
 
-let isRunning = false;
-let animationInterval: number | null = null;
-
 export async function start(): Promise<void> {
     const burstCount = 8;
     for (let i = 0; i < burstCount; i++) {
@@ -39,6 +36,4 @@ export async function start(): Promise<void> {
             clearInterval(randomInterval);
         }
     }, 500);
-
-    isRunning = true;
 }
