@@ -1,8 +1,10 @@
 //import { tsParticles } from "@tsparticles/engine";
 //import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
+import { start as startParticles } from "./particles";
 
-const BIRTHDAY_DATE = new Date(2027,4,15); //NOTE: remember to use index of month
-const birthdayTime = (BIRTHDAY_DATE.getTime());
+
+const BIRTHDAY_DATE = new Date(Date.now())//new Date(2027,4,15); //NOTE: remember to use index of month
+const birthdayTime = (BIRTHDAY_DATE.getTime() + 5000);
 const DELITA = "/Delita.jpg"
 const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
 
@@ -32,6 +34,8 @@ function setBackground(path: string){
 //once the birthday has arrived, cosmetic effects will be initialized
 async function birthday(){
     setBackground(BIRTHDAY_DELITA);
+
+    await startParticles();
 
     const message = document.getElementById("birthday-message");
     if(message){
@@ -77,7 +81,7 @@ function updateCountdown() {
     // Check if birthday arrived (only trigger once)
     if (days === 0 && hours === 0 && minutes === 0 && seconds === 0 && !birthdayTriggered) {
         birthdayTriggered = true;
-        birthday();
+        void birthday();
     }
 }
 
