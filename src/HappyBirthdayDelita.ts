@@ -1,5 +1,5 @@
-import { tsParticles } from "@tsparticles/engine";
-import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
+//import { tsParticles } from "@tsparticles/engine";
+//import { loadConfettiExplosionsPreset } from "@tsparticles/preset-confetti-explosions";
 
 const BIRTHDAY_DATE = new Date(); //new Date(2026,6,27); //FIXME: change to real date
 const birthdayTime = (BIRTHDAY_DATE.getTime()) + 5000; //FIXME: remove 5 seconds only for testing
@@ -24,13 +24,6 @@ function setBackground(path: string){
 //once the birthday has arrived, cosmetic effects will be initialized
 async function birthday(){
     setBackground(BIRTHDAY_DELITA);
-
-    const container = document.getElementById("tsparticles");
-    if (container) {
-        container.style.display = "block";
-        container.classList.add("show");
-    }
-    await showConfetti();
 
     const message = document.getElementById("birthday-message");
     if(message){
@@ -65,46 +58,8 @@ function calculate(): Countdown{
     return {days, hours, minutes, seconds};
 }
 
-//from tsparticles presets on github
-async function showConfetti() {
-    await loadConfettiExplosionsPreset(tsParticles);
-    try{
-        await tsParticles.load({
-            id: "tsparticles",
-            options: {
-                particles: {
-                    color: {
-                        value: ["#0000ff", "#00ff00"],
-                    },
-                },
-                preset: "confettiExplosions", // or "confetti-explosions"
-                background: {
-                    color:"transparent"
-                },
-                emitters: {
-                    rate: {
-                        quantity: 50,
-                        delay: 0.5
-                    },
-                    life: {
-                        duration: 0.1
-                    }
-                }
-            },
-        });
-        console.log("confetti loaded");
-    } catch(error){
-        console.error("confetti error");
-    }
-}
-
 async function init() {
     setBackground(DELITA);
-    const container = document.getElementById("tsparticles");
-    if (container) {
-        container.style.display = "none";
-        container.classList.remove("show");
-    }
 }
 
 //when page loads
