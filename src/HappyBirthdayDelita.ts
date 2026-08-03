@@ -50,19 +50,12 @@ function calculateCountdown(): Countdown{
     };
 }
 
-async function init() {
-    setBackground(DELITA);
-}
-
-//when page loads
-document.addEventListener("DOMContentLoaded", init);
-
-let birthdayTriggered = false;
-
 //local pad helper bc im encountering errors with packages atm - TEMPORARY FIX
 function pad2(value: number): string {
     return value < 10 ? `0${value}` : String(value);
 }
+
+let birthdayTriggered = false;
 
 function updateCountdown() {
     const { days, hours, minutes, seconds } = calculateCountdown();
@@ -85,5 +78,9 @@ function updateCountdown() {
     }
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+// Initialize when page loads
+document.addEventListener("DOMContentLoaded", () => {
+    setBackground(DELITA);
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+});
