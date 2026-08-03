@@ -39,23 +39,15 @@ export interface Countdown{
     seconds: number;
 }
 
-function calculate(): Countdown{
-    const currTime = Date.now();
-    let msLeft = birthdayTime - currTime;
+function calculateCountdown(): Countdown{
+    const msLeft = Math.max(0, birthdayTime - Date.now());
 
-    //FIXME: no need for this if we check it in updateCountdown
-    if(msLeft <= 0){
-        return {days: 0, hours: 0, minutes: 0, seconds: 0};
-    }
-    const days = Math.floor(msLeft / DAY);
-    msLeft %= DAY;
-    const hours = Math.floor(msLeft / HOUR);
-    msLeft %= HOUR;
-    const minutes = Math.floor(msLeft / MINUTE);
-    msLeft %= MINUTE;
-    const seconds = Math.floor(msLeft / SECOND);
-
-    return {days, hours, minutes, seconds};
+    return {
+        days: Math.floor(msLeft / DAY),
+        hours: Math.floor((msLeft % DAY) / HOUR),
+        minutes: Math.floor((msLeft % HOUR) / MINUTE),
+        seconds: Math.floor((msLeft % MINUTE) / SECOND)
+    };
 }
 
 async function init() {
@@ -73,7 +65,7 @@ function pad2(value: number): string {
 }
 
 function updateCountdown() {
-    const { days, hours, minutes, seconds } = calculate();
+    const { days, hours, minutes, seconds } = calculateCountdown();
 
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
