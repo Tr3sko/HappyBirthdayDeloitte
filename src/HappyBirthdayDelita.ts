@@ -13,12 +13,12 @@ const SECOND = 1000;
 
 function setBackground(path: string){
     const element = document.getElementById("element");
-    if(element){
-        element.style.backgroundImage = `url('${path}')`;
-        element.style.backgroundSize = "contain";
-        element.style.backgroundPosition = "center";
+    if(!element){
+        return;
     }
-
+    element.style.backgroundImage = `url('${path}')`;
+    element.style.backgroundSize = "contain";
+    element.style.backgroundPosition = "center";
 }
 
 //once the birthday has arrived, cosmetic effects will be initialized
