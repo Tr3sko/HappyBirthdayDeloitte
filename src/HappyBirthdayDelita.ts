@@ -38,6 +38,8 @@ async function birthday(){
         message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
         message.style.display = "block"; //temporary display for testing - TODO: change this later
     }
+
+    //TODO: add confetti
 }
 
 function calculateCountdown(): Countdown{
