@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: #111;
+    color: #fff;
+    overflow: hidden;
+}
+
+#element {
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    background: #111 center/cover no-repeat;
+}
+
+.panel {
+    text-align: center;
+    z-index: 2;
+    padding: 24px;
+    background: transparent;
+    text-shadow: 0 0 10px rgba(255, 147, 219);
+    border-radius: 12px;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(72px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.unit {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+#birthday-message {
+    display: none;
+    margin-top: 16px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+#tsparticles {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    pointer-events: none;
+}
