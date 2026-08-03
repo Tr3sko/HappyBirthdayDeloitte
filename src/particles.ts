@@ -1,3 +1,4 @@
+//from canvas-confetti on github
 import confetti from 'canvas-confetti';
 
 let isRunning = false;
@@ -40,27 +41,4 @@ export async function start(): Promise<void> {
     }, 500);
 
     isRunning = true;
-}
-
-export function stop(): void {
-    isRunning = false;
-    if (animationInterval) {
-        clearInterval(animationInterval);
-        animationInterval = null;
-    }
-}
-
-export function resume(): void {
-    if (!isRunning) {
-        start();
-    }
-}
-
-export function triggerBurst(): void {
-    confetti({
-        particleCount: 150,
-        spread: 360,
-        origin: { x: 0.5, y: 0.5 },
-        colors: ['#FF0000', '#00FF00', '#0000FF', '#FFD700', '#FF69B4']
-    });
 }
