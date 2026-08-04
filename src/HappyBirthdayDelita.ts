@@ -1,9 +1,9 @@
 import { start as showConfetti } from "./particles";
 
-const BIRTHDAY_DATE = new Date(Date.now())//new Date(2027,4,15); //NOTE: remember to use index of month
-const birthdayTime = (BIRTHDAY_DATE.getTime() + 5000);
-const DELITA = "/Delita.jpg"
-const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
+const BIRTHDAY_DATE = new Date(2027,4,15); //NOTE: remember to use index of month
+const birthdayTime = (BIRTHDAY_DATE.getTime());
+const DELITA = "/Delita.jpeg"
+const BIRTHDAY_DELITA = "/BirthdayDelita.jpeg"
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
@@ -24,7 +24,7 @@ function setBackground(path: string){
         return;
     }
     element.style.backgroundImage = `url('${path}')`;
-    element.style.backgroundSize = "contain";
+    element.style.backgroundSize = "fill";
     element.style.backgroundPosition = "center";
 }
 
@@ -39,8 +39,6 @@ async function birthday(){
         message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
         message.style.display = "block"; //temporary display for testing - TODO: change this later
     }
-
-    //TODO: add confetti
 }
 
 function calculateCountdown(): Countdown{
