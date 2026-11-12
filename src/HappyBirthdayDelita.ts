@@ -1,9 +1,9 @@
 import { start as showConfetti } from "./particles";
 
-const BIRTHDAY_DATE = new Date(2027,4,15); //NOTE: remember to use index of month
-const birthdayTime = (BIRTHDAY_DATE.getTime());
-const DELITA = "/Delita.jpeg"
-const BIRTHDAY_DELITA = "/BirthdayDelita.jpeg"
+const BIRTHDAY_MONTH = 4; //NOTE: remember to use index of month
+const BIRTHDAY_DAY = 15;
+const DELITA = "/Delita.jpg"
+const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
@@ -32,17 +32,17 @@ function setBackground(path: string){
 async function birthday(){
     setBackground(BIRTHDAY_DELITA);
 
-    await showConfetti();
-
     const message = document.getElementById("birthday-message");
     if(message){
         message.textContent = "HAPPY BIRTHDAY DELOITTE!!!"
         message.style.display = "block"; //temporary display for testing - TODO: change this later
     }
+
+    await showConfetti();
 }
 
-function calculateCountdown(): Countdown{
-    const msLeft = Math.max(0, birthdayTime - Date.now());
+function calculateCountdown(birthdayTime: number, now: number): Countdown{
+    const msLeft = Math.max(0, birthdayTime - now);
 
     return {
         days: Math.floor(msLeft / DAY),
@@ -57,10 +57,18 @@ function pad2(value: number): string {
     return value < 10 ? `0${value}` : String(value);
 }
 
-let birthdayTriggered = false;
+let birthdayYear: number | null = null;
 
 function updateCountdown() {
-    const { days, hours, minutes, seconds } = calculateCountdown();
+    const now = new Date();
+    const year = now.getFullYear();
+    const birthdayTime = new Date(year, BIRTHDAY_MONTH, BIRTHDAY_DAY).getTime();
+    const birthdayEnd = new Date(year, BIRTHDAY_MONTH, BIRTHDAY_DAY + 2).getTime();
+    const isBirthday = now.getTime() >= birthdayTime && now.getTime() < birthdayEnd;
+    const nextBirthdayTime = now.getTime() >= birthdayEnd
+        ? new Date(year + 1, BIRTHDAY_MONTH, BIRTHDAY_DAY).getTime()
+        : birthdayTime;
+    const { days, hours, minutes, seconds } = calculateCountdown(nextBirthdayTime, now.getTime());
 
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -73,10 +81,15 @@ function updateCountdown() {
     if (minutesEl) minutesEl.textContent = pad2(minutes);
     if (secondsEl) secondsEl.textContent = pad2(seconds);
 
-    // Check if birthday arrived (only trigger once)
-    if (days === 0 && hours === 0 && minutes === 0 && seconds === 0 && !birthdayTriggered) {
-        birthdayTriggered = true;
+    // Check if birthday arrived (only trigger once per year)
+    if (isBirthday && birthdayYear !== year) {
+        birthdayYear = year;
         void birthday();
+    } else if (!isBirthday && birthdayYear !== null) {
+        birthdayYear = null;
+        setBackground(DELITA);
+        const message = document.getElementById("birthday-message");
+        if (message) message.style.display = "none";
     }
 }
 
