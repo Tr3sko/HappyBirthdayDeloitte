@@ -10,3 +10,6 @@ I made this project to learn typescript.. that's it...
 #### Future additions:
 1. ANIMATIONS WOULD BE COOL!!
 2. migrate to svelte <3
+
+
+Okay that's all /ᐠ > ˕ <マ ₊˚⊹♡
