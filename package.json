@@ -8,16 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "canvas-confetti": "^11.16.0",
-    "svelte": "^5.56.8",
+    "canvas-confetti": "latest",
     "vite": "^8.1.5"
   },
   "devDependencies": {
-    "@types/canvas-confetti": "^1.9.0",
+    "@types/canvas-confetti": "latest",
     "typescript": "^5.9.3"
   },
-  "private": true,
-  "allowScripts": {
-    "svelte@5.56.8": true
-  }
+  "private": true
 }
