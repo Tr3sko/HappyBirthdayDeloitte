@@ -4,7 +4,7 @@ I made this project to learn typescript.. that's it...
 
 #### Demo:
 
-![](https://github.com/Tr3sko/HappyBirthdayDeloitte/showcase/showcase_gif.gif)
+![Demo](./showcase/showcase_gif.gif)
 
 
 #### Future additions:
