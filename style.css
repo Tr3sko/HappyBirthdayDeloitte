@@ -15,6 +15,21 @@ body {
     background: #111 center/cover no-repeat;
 }
 
+#element::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: url("/BirthdayDelita.jpg") center/cover no-repeat;
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+    pointer-events: none;
+}
+
+#element.birthday-background::before {
+    opacity: 1;
+}
+
 .panel {
     text-align: center;
     z-index: 2;
@@ -56,4 +71,10 @@ body {
     height: 100vh;
     z-index: 3;
     pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #element::before {
+        transition: none;
+    }
 }
