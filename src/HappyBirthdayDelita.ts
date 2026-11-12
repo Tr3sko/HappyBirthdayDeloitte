@@ -5,6 +5,10 @@ const BIRTHDAY_DAY = 15;
 const DELITA = "/Delita.jpg"
 const BIRTHDAY_DELITA = "/BirthdayDelita.jpg"
 
+const birthdayImage = new Image();
+birthdayImage.src = BIRTHDAY_DELITA;
+const birthdayImageReady = birthdayImage.decode().then(() => true, () => false);
+
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = DAY / 24;
 const MINUTE = HOUR / 60;
@@ -18,13 +22,27 @@ export interface Countdown{
     seconds: number;
 }
 
+let backgroundRequest = 0;
+
 function setBackground(path: string){
     const element = document.getElementById("element");
     if(!element){
         return;
     }
+
+    const request = ++backgroundRequest;
+    if (path === BIRTHDAY_DELITA) {
+        void birthdayImageReady.then(isReady => {
+            if (isReady && request === backgroundRequest) {
+                element.classList.add("birthday-background");
+            }
+        });
+        return;
+    }
+
+    element.classList.remove("birthday-background");
     element.style.backgroundImage = `url('${path}')`;
-    element.style.backgroundSize = "fill";
+    element.style.backgroundSize = "cover";
     element.style.backgroundPosition = "center";
 }
 
